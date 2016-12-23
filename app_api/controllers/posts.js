@@ -29,11 +29,11 @@ module.exports.postsList = function(req, res) {
 /* GET a single post by the id */
 module.exports.postsReadOne = function(req, res) {
   console.log('Buscando post', req.params);
-  if (req.params && req.params.postid) {
+  if (req.params && req.params.post) {
     Loc
-      .findById(req.params.locationid)
-      .exec(function(err, location) {
-        if (!location) {
+      .findById(req.params.post)
+      .exec(function(err, post) {
+        if (!post) {
           sendJSONresponse(res, 404, {
             "message": "postid not found"
           });
@@ -43,13 +43,13 @@ module.exports.postsReadOne = function(req, res) {
           sendJSONresponse(res, 404, err);
           return;
         }
-        console.log(location);
-        sendJSONresponse(res, 200, location);
+        console.log(post);
+        sendJSONresponse(res, 200, post);
       });
   } else {
-    console.log('No postid specified');
+    console.log('No post specified');
     sendJSONresponse(res, 404, {
-      "message": "No postid in request"
+      "message": "No post in request"
     });
   }
 };

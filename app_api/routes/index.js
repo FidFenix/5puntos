@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var ctrlLocations = require('../controllers/locations');
+var ctrlPosts = require('../controllers/posts');
 var ctrlReviews = require('../controllers/reviews');
 
 router.get('/posts', ctrlLocations.postsList);
